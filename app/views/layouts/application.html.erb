@@ -9,7 +9,13 @@
   </head>
 
   <body>
-    <nav><%= link_to "Registration", register_path %> | <%= link_to "Login", login_path %> | <%= link_to "Home", decks_path %></nav>
+    <nav>
+    <% if logged_in? %>
+    <%= current_user.username %> | <%= link_to "Logout", logout_path, method: :delete %> | <%= link_to "Home", root_path %>
+    <% else %>
+    <%= link_to "Registration", register_path %> | <%= link_to "Login", login_path %> | <%= link_to "Home", root_path %>
+    <% end %>
+    </nav>
     <%= yield %>
   </body>
 </html>
