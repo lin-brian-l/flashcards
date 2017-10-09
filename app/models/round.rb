@@ -13,4 +13,15 @@ class Round < ApplicationRecord
     end
   end
 
+  def pick_random_card
+    @guesses = self.guesses.where(correct: false)
+    @guess = @guesses.sample
+    @guess.card
+  end
+
+  # def cards_leftover
+  #   self.deck.cards
+
+  # end
+
 end

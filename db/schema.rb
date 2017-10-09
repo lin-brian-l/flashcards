@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009144822) do
+ActiveRecord::Schema.define(version: 20171009173253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20171009144822) do
 
   create_table "guesses", force: :cascade do |t|
     t.integer "counter"
-    t.boolean "correct"
+    t.boolean "correct", default: false
     t.integer "round_id"
     t.integer "card_id"
     t.datetime "created_at", null: false
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20171009144822) do
     t.integer "deck_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "completed", default: false
   end
 
   create_table "users", force: :cascade do |t|
