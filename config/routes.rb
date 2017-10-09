@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  resources :decks, :sessions, :users, :cards
+  resources :sessions, :users, :cards
+
+  resources :decks do
+    resources :rounds
+  end
+
+  resources :rounds do
+    resources :cards
+  end
 
   root "decks#index"
 
@@ -13,8 +21,9 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy', as: :logout
 
+  get 'rounds/:round_id/cards/:id' => 'cards#show'
+  post 'rounds/:round_id/cards/:id' => 'cards#check', as: :card_check
 
-  get '/cards/:id' => 'cards#show'
-  post '/cards/:id' => 'cards#check', as: :card_check
+  get 'decks/:deck_id/rounds' => 'rounds#create'
 
 end

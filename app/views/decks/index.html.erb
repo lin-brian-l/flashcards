@@ -1,6 +1,6 @@
 <h2>Decks on Decks (on Decks)</h2>
 <ul>
 <% @decks.each do |deck| %>
-  <li><%= deck.title %></li>
+  <li><%= link_to deck.title, deck_rounds_path(deck), method: :post %></li>
 <% end %>
 </ul>

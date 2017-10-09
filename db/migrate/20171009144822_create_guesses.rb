@@ -2,7 +2,7 @@ class CreateGuesses < ActiveRecord::Migration[5.1]
   def change
     create_table :guesses do |t|
       t.integer :counter
-      t.boolean :correct
+      t.boolean :correct, default: false
       t.integer :round_id
       t.integer :card_id
 
