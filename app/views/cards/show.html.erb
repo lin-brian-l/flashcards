@@ -1,0 +1,7 @@
+<div class="container">
+  <p><%= @card.question %></p>
+  <%= form_tag card_check_path(@card) do %>
+    Answer: <%= text_field_tag :user_answer %><br>
+    <%= submit_tag "Submit" %>
+  <% end %>
+</div>
