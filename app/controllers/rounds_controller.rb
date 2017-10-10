@@ -5,4 +5,8 @@ class RoundsController < ApplicationController
     @next_card = @round.pick_random_card
     redirect_to "/rounds/#{@round.id}/cards/#{@next_card.id}"
   end
+
+  def show
+    @round = Round.find(params[:id])
+  end
 end

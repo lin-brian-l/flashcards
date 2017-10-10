@@ -24,4 +24,12 @@ class Round < ApplicationRecord
 
   # end
 
+  def round_complete
+    correct_count = self.guesses.where(correct: true).count
+    if self.guesses.count == correct_count
+      self.completed = true
+    end
+  end
+
+
 end

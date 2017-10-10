@@ -1,1 +1,26 @@
-<%= @answer %>
+<div class="container">
+  <% if @correct %>
+  <p>Your answer was correct.</p>
+
+  <% else %>
+  <p>Your answer was incorrect.</p>
+
+  <p>The correct answer was <%= @card.answer %>.</p>
+
+  <% end %>
+
+  <% if @round.completed == false %>
+
+  <button class="button">
+    <%= link_to 'Next Card', round_card_path(@round, @next_card) %>
+  </button>
+
+  <% else %>
+
+  <%= link_to "Finished Round", deck_round_path(@round.deck, @round) %>
+
+  <% end %>
+
+</div>
+
+
